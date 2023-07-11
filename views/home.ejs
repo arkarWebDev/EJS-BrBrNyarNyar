@@ -17,7 +17,7 @@
     <% } %> <% for(let post of postsArr) { %>
     <div class="post-box">
       <p class="post-title"><%= post.title %></p>
-      <p class="post-des"><%= post.description %></p>
+      <a class="btn" href="/post/<%= post.id %>">See More...</a>
     </div>
     <% } %>
     <%- include("./includes/foot") %>
