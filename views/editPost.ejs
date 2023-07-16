@@ -1,0 +1,30 @@
+<%- include("./includes/head") %>
+
+    <section class="mx-auto">
+      <a href="/">Go back home</a>
+      <h1 class="title">Edit your post.</h1>
+      <form action="/admin/post-edit" method="post">
+        <input type="text" name="postId" value="<%= post.id %>" hidden>
+        <div>
+          <label for="title">Enter title</label>
+          <input type="text" id="title" name="title" value="<%= post.title %>" required />
+        </div>
+        <div>
+          <label for="photo">Enter photo</label>
+          <input type="text" id="photo" name="photo" value="<%= post.imgUrl %>" required />
+        </div>
+        <div>
+          <label for="description">Enter description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+            value="<%= post.description %>"
+          ><%= post.description %></textarea>
+        </div>
+        <button>Update Post</button>
+      </form>
+    </section>
+  </body>
+  <%- include("./includes/foot") %>
