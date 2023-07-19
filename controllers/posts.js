@@ -1,32 +1,33 @@
 const posts = [];
+const Post = require("../models/post");
 
 exports.createPost = (req, res) => {
-    const { title, description , photo} = req.body;
-    console.log(`Title value is ${title} & description is ${description}`);
-    posts.push({
-        id : Math.random(),
-        title,
-        description,
-        photo
-    });
-    res.redirect("/");
-}
+  const { title, description, photo } = req.body;
+  const post = new Post(title, description, photo);
+
+  post
+    .create()
+    .then((result) => {
+      console.log(result);
+      res.redirect("/");
+    })
+    .catch((err) => console.log(err));
+};
 
 exports.renderCreatePage = (req, res) => {
-    // res.sendFile(path.join(__dirname, "..", "views", "addPost.html"));
-    res.render("addPost", { title: "Post create ml" });
-}
+  // res.sendFile(path.join(__dirname, "..", "views", "addPost.html"));
+  res.render("addPost", { title: "Post create ml" });
+};
 
 exports.renderHomePage = (req, res) => {
-    console.log(posts);
-    // res.sendFile(path.join(__dirname, "..", "views", "homepage.html"));
-    res.render("home", { title: "Hello World", postsArr: posts });
-}
+  Post.getPosts()
+    .then((posts) => res.render("home", { title: "Homepage", postsArr: posts }))
+    .catch((err) => console.log(err));
+};
 
-exports.getPost = (req,res)=>{
-    const postId = Number(req.params.postId);
-    console.log(postId);
-    const post = posts.find((post)=>post.id === postId)
-    console.log(post);
-    res.render("details",{title : "Post Details Page",post})
-}
+exports.getPost = (req, res) => {
+  const postId = req.params.postId;
+  Post.getPost(postId)
+    .then((post) => res.render("details", { title: post.title, post }))
+    .catch((err) => console.log(err));
+};
