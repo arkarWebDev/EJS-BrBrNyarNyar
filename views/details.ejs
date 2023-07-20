@@ -3,7 +3,9 @@
   <h1><%= post.title %></h1>
   <img src="<%= post.imgUrl %>" alt="<%= post.title %>" />
   <p><%= post.description %></p>
-  <button>Delete</button>
-  <button>Edit</button>
+  <form action="/admin/delete/<%= post._id %>" method="post">
+    <button>Delete</button>
+  </form>
+  <a href="/admin/edit/<%= post._id %>" class="btn-full">Edit</a>
 </section>
 <%- include("./includes/foot") %>
