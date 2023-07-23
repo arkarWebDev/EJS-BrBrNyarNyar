@@ -33,6 +33,7 @@ button,
   padding: 8px 0;
   width: 100%;
   text-align: center;
+  cursor: pointer;
 }
 .mx-auto {
   width: 40%;
