@@ -11,6 +11,7 @@ app.set("views", "views");
 
 const postRoutes = require("./routes/post");
 const adminRoutes = require("./routes/admin");
+const authRoutes = require("./routes/auth");
 
 const User = require("./models/user");
 
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 
 app.use("/admin", adminRoutes);
 app.use(postRoutes);
+app.use(authRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URL)

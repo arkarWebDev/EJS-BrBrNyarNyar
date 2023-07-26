@@ -1,0 +1,19 @@
+<%- include("../includes/head") %>
+
+    <section class="mx-auto">
+      <a href="/">Go back home</a>
+      <h1 class="title">Add a new account here!</h1>
+      <form action="/login" method="post">
+        <div>
+          <label for="email">Enter email</label>
+          <input type="text" id="email" name="email"  />
+        </div>
+        <div>
+            <label for="password">Enter password</label>
+            <input type="password" id="password" name="password"  />
+          </div>
+        <button>Create Accont</button>
+      </form>
+    </section>
+  </body>
+  <%- include("../includes/foot") %>

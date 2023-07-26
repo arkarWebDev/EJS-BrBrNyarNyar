@@ -16,13 +16,19 @@ exports.renderCreatePage = (req, res) => {
 };
 
 exports.renderHomePage = (req, res) => {
+  // isLogIn = true
+  const cookie = req.get("Cookie").split("=")[1].trim() === "true";
   Post.find()
     .select("title")
     .populate("userId", "username")
     .sort({ title: -1 })
     .then((posts) => {
       console.log(posts);
-      res.render("home", { title: "Homepage", postsArr: posts });
+      res.render("home", {
+        title: "Homepage",
+        postsArr: posts,
+        isLogin: cookie,
+      });
     })
     .catch((err) => console.log(err));
 };

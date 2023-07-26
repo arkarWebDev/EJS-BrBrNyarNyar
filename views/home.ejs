@@ -5,7 +5,11 @@
   pariatur autem. Maxime velit eos sint. Tempore quam cumque optio laborum
   dolore commodi cum dolorem deleniti soluta, ea nemo.
 </p>
+<% if(isLogin) { %>
 <a href="/admin/create-post">Add a new post</a>
+<% } else { %>
+<a href="/login">Create a new account</a>
+<% } %>
 <hr />
 <h1 class="title">Posts</h1>
 <% if(postsArr.length === 0) { %>
