@@ -17,7 +17,8 @@ exports.renderCreatePage = (req, res) => {
 
 exports.renderHomePage = (req, res) => {
   // isLogIn = true
-  const cookie = req.get("Cookie").split("=")[1].trim() === "true";
+  // const cookie = req.get("Cookie").split("=")[1].trim() === "true";
+  console.log(req.session.isLogin);
   Post.find()
     .select("title")
     .populate("userId", "username")
@@ -27,7 +28,7 @@ exports.renderHomePage = (req, res) => {
       res.render("home", {
         title: "Homepage",
         postsArr: posts,
-        isLogin: cookie,
+        isLogin: req.session.isLogin ? true : false,
       });
     })
     .catch((err) => console.log(err));
