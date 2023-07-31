@@ -4,6 +4,7 @@
       <a href="/">Go back home</a>
       <h1 class="title">Add a new post here!</h1>
       <form action="/admin/edit-post" method="post">
+        <input hidden value="<%= csrfToken %>" name="_csrf" />
         <input type="text" value="<%= post._id %>" name="postId" hidden>
         <div>
           <label for="title">Enter title</label>

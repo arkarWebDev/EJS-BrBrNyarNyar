@@ -4,6 +4,7 @@
   <img src="<%= post.imgUrl %>" alt="<%= post.title %>" />
   <p><%= post.description %></p>
   <form action="/admin/delete/<%= post._id %>" method="post">
+    <input hidden value="<%= csrfToken %>" name="_csrf" />
     <button>Delete</button>
   </form>
   <a href="/admin/edit/<%= post._id %>" class="btn-full">Edit</a>

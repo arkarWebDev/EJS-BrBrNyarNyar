@@ -20,13 +20,12 @@ exports.renderHomePage = (req, res) => {
   console.log(req.session.isLogin);
   Post.find()
     .select("title")
-    .populate("userId", "username")
+    .populate("userId", "email")
     .sort({ title: -1 })
     .then((posts) => {
       res.render("home", {
         title: "Homepage",
         postsArr: posts,
-        isLogin: req.session.isLogin ? true : false,
       });
     })
     .catch((err) => console.log(err));

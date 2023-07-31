@@ -4,6 +4,7 @@
       <a href="/">Go back home</a>
       <h1 class="title">Add a new post here!</h1>
       <form action="/admin" method="post">
+        <input hidden value="<%= csrfToken %>" name="_csrf" />
         <div>
           <label for="title">Enter title</label>
           <input type="text" id="title" name="title" required />
