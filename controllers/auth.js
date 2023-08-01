@@ -1,9 +1,26 @@
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
+const nodemailer = require("nodemailer");
+const dotenv = require("dotenv").config();
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.SENDER_MAIL,
+    pass: process.env.MAIL_PASSWORD,
+  },
+});
+
 // render register page
 exports.getRegisterPage = (req, res) => {
-  res.render("auth/register", { title: "Register" });
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+  res.render("auth/register", { title: "Register", errorMsg: message });
 };
 
 // handle register
@@ -12,6 +29,7 @@ exports.registerAccount = (req, res) => {
   User.findOne({ email })
     .then((user) => {
       if (user) {
+        req.flash("error", "Email is already exist.");
         return res.redirect("/register");
       }
       return bcrypt
@@ -24,6 +42,17 @@ exports.registerAccount = (req, res) => {
         })
         .then((_) => {
           res.redirect("/login");
+          transporter.sendMail(
+            {
+              from: process.env.SENDER_MAIL,
+              to: email,
+              subject: "Register Successful",
+              html: "<h1>Register account successful.</h1><p>Created an account using this email address in blog.io.</p>",
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
         });
     })
     .catch((err) => console.log(err));
@@ -31,7 +60,13 @@ exports.registerAccount = (req, res) => {
 
 // render login page
 exports.getLoginPage = (req, res) => {
-  res.render("auth/login", { title: "Login" });
+  let message = req.flash("error");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
+  res.render("auth/login", { title: "Login", errorMsg: message });
 };
 
 // handle login
@@ -40,6 +75,7 @@ exports.postLoginData = (req, res) => {
   User.findOne({ email })
     .then((user) => {
       if (!user) {
+        req.flash("error", "Check your imformation and try again.");
         return res.redirect("/login");
       }
       bcrypt

@@ -3,7 +3,10 @@
     <section class="mx-auto">
       <a href="/">Go back home</a>
       <h1 class="title">Login account</h1>
-      <form action="/login" method="post">\
+      <% if(errorMsg){ %>
+        <p class="msg-box"><%= errorMsg %></p>
+      <% }%>
+      <form action="/login" method="post">
         <input hidden value="<%= csrfToken %>" name="_csrf" />
         <div>
           <label for="email">Enter email</label>

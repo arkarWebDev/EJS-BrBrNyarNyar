@@ -3,6 +3,9 @@
     <section class="mx-auto">
       <a href="/">Go back home</a>
       <h1 class="title">Register a new account here!</h1>
+      <% if(errorMsg){ %>
+        <p class="msg-box-warn"><%= errorMsg %></p>
+      <% }%>
       <form action="/register" method="post">
         <input hidden value="<%= csrfToken %>" name="_csrf" />
         <div>
