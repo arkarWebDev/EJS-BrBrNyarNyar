@@ -48,7 +48,7 @@ exports.registerAccount = (req, res) => {
               from: process.env.SENDER_MAIL,
               to: email,
               subject: "Register Successful",
-              html: "<h1>Register account successful.</h1><p>Created an account using this email address in blog.io.</p>",
+              html: "<h1>Register account successful.</h1><p>You have been created an account using this email address in blog.io</p>",
             },
             (err) => {
               console.log(err);

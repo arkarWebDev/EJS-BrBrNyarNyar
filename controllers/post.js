@@ -15,7 +15,7 @@ exports.renderCreatePage = (req, res) => {
 
 exports.renderHomePage = (req, res) => {
   Post.find()
-    .select("title")
+    .select("title description")
     .populate("userId", "email")
     .sort({ title: -1 })
     .then((posts) => {
