@@ -6,7 +6,9 @@
   dolore commodi cum dolorem deleniti soluta, ea nemo.
 </p>
 <% if(isLogin) { %>
-<a href="/admin/create-post">Add a new post</a>
+<a href="/admin/create-post"
+  >Add a new post as <%= currentUserEmail ? currentUserEmail : "" %></a
+>
 <form action="/logout" method="post">
   <input hidden value="<%= csrfToken %>" name="_csrf" />
   <button>Logout</button>
@@ -17,7 +19,7 @@
 <% } %>
 <hr />
 <h1 class="title">Posts</h1>
-<% if(postsArr.length === 0) { %>
+<% if(postsArr.length === 0 && isLogin) { %>
 <div>
   <h4>Nothing to see ?</h4>
   <p>Create a new post now !!!</p>

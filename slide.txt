@@ -1,7 +1,3 @@
-templating engines
+authentication  <==
 
-ejs,pug(jade),handlebars
-
-ejs <== 
-
-node server data + templating engines ==> html->file ( with dynamic content )
+authorization <==
