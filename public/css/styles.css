@@ -82,11 +82,15 @@
   height: 30rem;
   object-fit: cover;
 }
-.details p {
+.details .des {
   font-size: 21px;
 }
 .details hr {
   margin: 20px 0;
+}
+.tmp {
+  margin: 4px 0;
+  font-weight: 500;
 }
 a {
   display: block;

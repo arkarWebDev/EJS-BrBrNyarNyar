@@ -4,10 +4,14 @@
     <h1><%= post.title %></h1>
     <a href="/">Go back</a>
   </div>
+  <p class="tmp">Post by - <%= post.userId.email %></p>
+  <% if(date) { %>
+  <p class="tmp">Upload at - <%= date %></p>
+  <% } %>
   <img src="<%= post.imgUrl %>" alt="<%= post.title %>" />
   <hr />
-  <p><%= post.description %></p>
-  <% if(post.userId.toString() === currentLoginUserId.toString()) { %>
+  <p class="des"><%= post.description %></p>
+  <% if(post.userId._id.toString() === currentLoginUserId.toString()) { %>
   <div class="login-div">
     <div>
       <form action="/admin/delete/<%= post._id %>" method="post">
