@@ -92,6 +92,19 @@
   margin: 4px 0;
   font-weight: 500;
 }
+.four {
+  text-align: center;
+  margin-top: 40px;
+}
+.four h1 {
+  font-size: 60px;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* global styles */
 a {
   display: block;
   margin: 10px 0;

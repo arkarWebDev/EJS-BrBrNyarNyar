@@ -19,6 +19,8 @@ const authRoutes = require("./routes/auth");
 
 const User = require("./models/user");
 
+const errorController = require("./controllers/error");
+
 const { isLogin } = require("./middleware/is-login");
 
 const store = new mongoStore({
@@ -63,6 +65,10 @@ app.use((req, res, next) => {
 app.use("/admin", isLogin, adminRoutes);
 app.use(postRoutes);
 app.use(authRoutes);
+
+app.all("*", errorController.get404Page);
+
+app.use(errorController.get500Page);
 
 mongoose
   .connect(process.env.MONGODB_URL)
