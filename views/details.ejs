@@ -8,7 +8,7 @@
   <% if(date) { %>
   <p class="tmp">Upload at - <%= date %></p>
   <% } %>
-  <img src="<%= post.imgUrl %>" alt="<%= post.title %>" />
+  <img src="<%= '/' + post.imgUrl %>" alt="<%= post.title %>" />
   <hr />
   <p class="des"><%= post.description %></p>
   <% if(post.userId._id.toString() === currentLoginUserId.toString()) { %>

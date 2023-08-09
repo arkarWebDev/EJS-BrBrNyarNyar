@@ -6,7 +6,7 @@
       <% if(errorMsg){ %>
         <p class="msg-box"><%= errorMsg %></p>
       <% }%>
-      <form action="/admin" method="post" novalidate>
+      <form action="/admin" method="post" enctype="multipart/form-data">
         <input hidden value="<%= csrfToken %>" name="_csrf" />
         <div>
           <label for="title">Enter title</label>
@@ -14,7 +14,7 @@
         </div>
         <div>
           <label for="photo">Enter photo</label>
-          <input type="text" id="photo" name="photo" required value="<%= oldFormData.photo %>" />
+          <input type="file" id="photo" name="photo" required />
         </div>
         <div>
           <label for="description">Enter description</label>

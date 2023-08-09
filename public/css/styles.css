@@ -19,6 +19,9 @@
 .header p {
   font-size: 22px;
 }
+.pl-80 {
+  padding-left: 80px;
+}
 .login-div,
 .login-div div {
   display: flex;
