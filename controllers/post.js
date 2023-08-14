@@ -190,17 +190,9 @@ exports.savePostAsPDF = (req, res, next) => {
     orientation: "portrait",
     border: "10mm",
     header: {
-      height: "45mm",
+      height: "20mm",
       contents:
         '<h4 style="text-align: center;">PDF DOWNLOAD FROM BLOG.IO</h4>',
-    },
-    footer: {
-      height: "28mm",
-      contents: {
-        first: "Cover page",
-        contents:
-          '<span style="color: #444; text-align: center;">@codehub.mm</span>',
-      },
     },
   };
   Post.findById(id)
