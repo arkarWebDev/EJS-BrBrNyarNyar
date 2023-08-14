@@ -95,6 +95,13 @@
   margin: 4px 0;
   font-weight: 500;
 }
+.paginate {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 80px 10px 80px;
+}
 .four {
   text-align: center;
   margin-top: 40px;
