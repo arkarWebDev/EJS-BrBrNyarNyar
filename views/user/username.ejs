@@ -1,0 +1,17 @@
+<%- include("../includes/head") %>
+    <section class="mx-auto">
+      <h1 class="title form-title">Set username</h1>
+      <% if(errorMsg){ %>
+        <p class="msg-box"><%= errorMsg %></p>
+      <% }%>
+      <form action="/admin/setusername" method="post" novalidate>
+        <input hidden value="<%= csrfToken %>" name="_csrf" />
+        <div>
+          <label for="username">Enter username</label>
+          <input type="text" id="username" name="username" value="<%= oldFormData.username %>"  />
+        </div>
+        <button>Set Username</button>
+      </form>
+    </section>
+  </body>
+  <%- include("../includes/foot") %>

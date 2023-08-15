@@ -1,17 +1,8 @@
 <%- include("../includes/head") %>
 <section class="header">
-  <div class="own-user">
-    <div class="ic-email">
-      <i class="fa-solid fa-circle-user"></i>
-      <p class=""><%= currentUserEmail%></p>
-      <p class="">
-        <%= postsArr[0].userId.username ? postsArr[0].userId.username : "" %>
-      </p>
-    </div>
-    <div class="own-user-right">
-      <a href="/admin/username">Set username</a>
-      <a href="/admin/premium">Buy IO premium</a>
-    </div>
+  <div class="public-user">
+    <i class="fa-solid fa-circle-user"></i>
+    <p class=""><%= currentUserEmail%></p>
   </div>
   <div class="post-container">
     <% for(let post of postsArr) { %>
@@ -32,9 +23,11 @@
   </div>
   <div class="paginate">
     <% if(hasNextPage) {%>
-    <a href="/admin/profile?page=<%= nextPage%>">Next Page <%= nextPage%></a>
+    <a href="/profile/<%= postsArr[0].userId._id %>?page=<%= nextPage%>"
+      >Next Page <%= nextPage%></a
+    >
     <% } %> <% if(hasPreviousPage) {%>
-    <a href="/admin/profile?page=<%= previousPage%>"
+    <a href="/profile/<%= postsArr[0].userId._id %>?page=<%= previousPage%>"
       >Previous Page <%= previousPage%></a
     >
     <% } %>

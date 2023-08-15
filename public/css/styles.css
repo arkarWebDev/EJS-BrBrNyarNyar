@@ -15,17 +15,24 @@ a {
   text-decoration: none;
 }
 /* for title */
-.post-box a{
+.post-box a {
   color: #000;
   background-color: transparent;
   padding: 0 0;
   text-decoration: underline;
 }
 /* for go back  */
-.gb-btn{
+.gb-btn {
   margin: 0 0;
 }
-nav{
+/* for email */
+.post-email {
+  font-size: 15px;
+  margin: 10px 0;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+nav {
   width: 60%;
   margin: 0 auto;
   display: flex;
@@ -34,12 +41,13 @@ nav{
   background-color: #000;
   padding: 0 10px;
 }
-nav .right-side{
+nav .right-side {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-.header{
+
+.header {
   width: 60%;
   margin: 0 auto;
 }
@@ -59,7 +67,7 @@ nav .right-side{
 .post-box {
   flex: 1;
 }
-.post-box-img{
+.post-box-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -72,11 +80,6 @@ nav .right-side{
 .post-des {
   font-size: 18px;
   margin-bottom: 8px;
-}
-.post-email {
-  font-size: 19px;
-  margin: 10px 0;
-  font-weight: 600;
 }
 .details {
   width: 60%;
@@ -91,6 +94,27 @@ nav .right-side{
 }
 .details h1 {
   font-size: 44px;
+}
+.public-user {
+  text-align: center;
+  margin: 40px 0 20px 0;
+}
+.public-user i,
+.own-user i {
+  font-size: 6rem;
+}
+.own-user {
+  margin: 40px 0 20px 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.own-user-right a {
+  text-align: center;
+  width: 100%;
+}
+.own-user .ic-email {
+  text-align: center;
 }
 .details img {
   width: 100%;
@@ -111,25 +135,25 @@ nav .right-side{
   align-items: center;
   gap: 10px;
 }
-.tmp i{
+.tmp i {
   font-size: 20px;
 }
-.details-sec{
+.details-sec {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 8px;
 }
-.details-sec .down-ic{
+.details-sec .down-ic {
   font-size: 40px;
 }
-.details-sec a{
+.details-sec a {
   margin: o 0;
   color: #000;
   background-color: transparent;
   padding: 0 0;
 }
-.action-div{
+.action-div {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
@@ -155,16 +179,42 @@ nav .right-side{
   align-items: center;
   justify-content: center;
 }
-/* global styles */
-a {
-  display: block;
-  margin: 10px 0;
-  color: #fff;
-  background-color: #000;
-  padding: 8px 10px;
-  width: fit-content;
-  text-decoration: none;
+
+/* premium start */
+.premium {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
 }
+.card {
+  padding: 20px 20px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+.card h3 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.card p {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+}
+.card ul li {
+  list-style: none;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+/* premium end */
+
+/* global styles */
 label {
   display: block;
   font-size: 16px;

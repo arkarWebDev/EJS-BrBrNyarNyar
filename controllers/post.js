@@ -69,14 +69,12 @@ exports.renderHomePage = (req, res, next) => {
         return res.render("home", {
           title: "Homepage",
           postsArr: posts,
-          // currentUserEmail: req.session.userInfo
-          //   ? req.session.userInfo.email
-          //   : "",
           currentPage: pageNumber,
           hasNextPage: POST_PAR_PAGE * pageNumber < totalPostNumber,
           hasPreviousPage: pageNumber > 1,
           nextPage: pageNumber + 1,
           previousPage: pageNumber - 1,
+          currentUserID: req.session.userInfo ? req.session.userInfo._id : "",
         });
       } else {
         return res.status(500).render("error/500", {

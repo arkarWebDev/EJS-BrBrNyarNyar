@@ -1,31 +1,46 @@
 <%- include("./includes/head") %>
 <section class="header">
-<h1 class="title">Recent posts</h1>
-<% if(postsArr.length === 0 && isLogin) { %>
-<div>
-  <h4>Nothing to see ?</h4>
-  <p>Create a new post now !!!</p>
-  <a href="/admin/create-post">Create a new post</a>
-</div>
-<% } %>
-<div class="post-container">
-  <% for(let post of postsArr) { %>
-  <div class="post-box">
-    <img src="<%= '/' + post.imgUrl %>" alt="<%= post.title %>" class="post-box-img">
-    <a class="post-title" href="/post/<%= post._id %>"><%= post.title.substr(0,40) %></a>
-    <p class="post-des"><%= post.description.substr(0,100) %></p>
-    <hr>
-    <p class="post-email">Post by : <%= post.userId.email %></p>
+  <h1 class="title">Recent posts</h1>
+  <% if(postsArr.length === 0 && isLogin) { %>
+  <div>
+    <h4>Nothing to see ?</h4>
+    <p>Create a new post now !!!</p>
+    <a href="/admin/create-post">Create a new post</a>
   </div>
   <% } %>
-</div>
-<div class="paginate">
-  <% if(!hasNextPage && currentPage == 1) {%>
-  <a href="/?page=2">Next Page</a>
-  <% } %> <% if(hasNextPage) {%>
-  <a href="/?page=<%= nextPage%>">Next Page <%= nextPage%></a>
-  <% } %> <% if(hasPreviousPage) {%>
-  <a href="/?page=<%= previousPage%>">Previous Page <%= previousPage%></a>
-  <% } %>
-</div>
-<%- include("./includes/foot") %>
+  <div class="post-container">
+    <% for(let post of postsArr) { %>
+    <div class="post-box">
+      <img
+        src="<%= '/' + post.imgUrl %>"
+        alt="<%= post.title %>"
+        class="post-box-img"
+      />
+      <a class="post-title" href="/post/<%= post._id %>"
+        ><%= post.title.substr(0,40) %></a
+      >
+      <p class="post-des"><%= post.description.substr(0,100) %></p>
+      <hr />
+      <% if(post.userId._id.toString() == currentUserID.toString() ){%>
+      <a href="/admin/profile" class="post-email"
+        ><span>Post by : </span><%= post.userId.email %></a
+      >
+      <%}else{%>
+      <a href="/profile/<%= post.userId._id %>" class="post-email"
+        ><span>Post by : </span><%= post.userId.email %></a
+      >
+      <%}%>
+    </div>
+    <% } %>
+  </div>
+  <div class="paginate">
+    <% if(!hasNextPage && currentPage == 1) {%>
+    <a href="/?page=2">Next Page</a>
+    <% } %> <% if(hasNextPage) {%>
+    <a href="/?page=<%= nextPage%>">Next Page <%= nextPage%></a>
+    <% } %> <% if(hasPreviousPage) {%>
+    <a href="/?page=<%= previousPage%>">Previous Page <%= previousPage%></a>
+    <% } %>
+  </div>
+  <%- include("./includes/foot") %>
+</section>
