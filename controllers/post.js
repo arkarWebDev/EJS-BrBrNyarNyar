@@ -8,7 +8,7 @@ const expath = require("path");
 
 const fileDelete = require("../utils/fileDelete");
 
-const POST_PAR_PAGE = 3;
+const POST_PAR_PAGE = 6;
 
 exports.createPost = (req, res, next) => {
   const { title, description } = req.body;
@@ -53,27 +53,12 @@ exports.renderCreatePage = (req, res, next) => {
 exports.renderHomePage = (req, res, next) => {
   const pageNumber = +req.query.page || 1;
   let totalPostNumber;
-  // total = 12
-  // per page = 3
-  // next page = -3 +3
-
-  // page => 1 - 1 = 0
-  // per page => 3 * 0 = 0
-
-  // page => 2 - 1 = 1
-  // per page => 3 * 1 = 3
-
-  // page => 3 - 1 = 2
-  // per page => 3 * 2 = 6
-
-  // page => 4 - 1 = 3
-  // per page => 3 * 3 = 9
   Post.find()
     .countDocuments()
     .then((totalPostCount) => {
       totalPostNumber = totalPostCount;
       return Post.find()
-        .select("title description")
+        .select("title description imgUrl")
         .populate("userId", "email")
         .skip((pageNumber - 1) * POST_PAR_PAGE)
         .limit(POST_PAR_PAGE)
@@ -84,9 +69,9 @@ exports.renderHomePage = (req, res, next) => {
         return res.render("home", {
           title: "Homepage",
           postsArr: posts,
-          currentUserEmail: req.session.userInfo
-            ? req.session.userInfo.email
-            : "",
+          // currentUserEmail: req.session.userInfo
+          //   ? req.session.userInfo.email
+          //   : "",
           currentPage: pageNumber,
           hasNextPage: POST_PAR_PAGE * pageNumber < totalPostNumber,
           hasPreviousPage: pageNumber > 1,
