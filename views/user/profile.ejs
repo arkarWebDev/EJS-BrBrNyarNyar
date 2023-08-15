@@ -1,0 +1,31 @@
+<%- include("../includes/head") %>
+<section class="header">
+  <h1 class="title">Posts by <%= currentUserEmail%></h1>
+  <div class="post-container">
+    <% for(let post of postsArr) { %>
+    <div class="post-box">
+      <img
+        src="<%= '/' + post.imgUrl %>"
+        alt="<%= post.title %>"
+        class="post-box-img"
+      />
+      <a class="post-title" href="/post/<%= post._id %>"
+        ><%= post.title.substr(0,40) %></a
+      >
+      <p class="post-des"><%= post.description.substr(0,100) %></p>
+      <hr />
+      <p class="post-email">Post by : <%= post.userId.email %></p>
+    </div>
+    <% } %>
+  </div>
+  <div class="paginate">
+    <% if(hasNextPage) {%>
+    <a href="/admin/profile?page=<%= nextPage%>">Next Page <%= nextPage%></a>
+    <% } %> <% if(hasPreviousPage) {%>
+    <a href="/admin/profile?page=<%= previousPage%>"
+      >Previous Page <%= previousPage%></a
+    >
+    <% } %>
+  </div>
+</section>
+<%- include("../includes/foot") %>
