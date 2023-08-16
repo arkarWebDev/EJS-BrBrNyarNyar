@@ -1,7 +1,11 @@
 <%- include("../includes/head") %>
 <section class="header">
   <div class="public-user">
-    <i class="fa-solid fa-circle-user"></i>
+    <% if(postsArr[0].userId.profile_imgUrl && postsArr[0].userId.isPremium ){ %>
+      <img src="<%= '/' + postsArr[0].userId.profile_imgUrl %>" alt="<%= postsArr[0].userId.usernam %>" class="profile-photo" />
+      <% }else{ %>
+        <i class="fa-solid fa-circle-user"></i>
+        <% } %>
     <p class="">
       <% if(postsArr[0].userId.username) {%>
         <p class="premium-username"><%= postsArr[0].userId.username %>

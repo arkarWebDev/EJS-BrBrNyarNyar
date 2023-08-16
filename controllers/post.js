@@ -59,7 +59,7 @@ exports.renderHomePage = (req, res, next) => {
       totalPostNumber = totalPostCount;
       return Post.find()
         .select("title description imgUrl")
-        .populate("userId", "email isPremium username")
+        .populate("userId", "email isPremium username profile_imgUrl")
         .skip((pageNumber - 1) * POST_PAR_PAGE)
         .limit(POST_PAR_PAGE)
         .sort({ createdAt: -1 });

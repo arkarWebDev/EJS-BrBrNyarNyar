@@ -1,53 +1,65 @@
 <%- include("../includes/head") %>
-<section class="header">
-  <div class="own-user">
-    <div class="ic-email">
-      <i class="fa-solid fa-circle-user"></i>
-      <p class=""><%= currentUserEmail%></p>
-      <p class="">
-        <% if(postsArr[0].userId.username) {%>
-          <p class="premium-username"><%= postsArr[0].userId.username %>
-            <% if(postsArr[0].userId.isPremium){ %>
-            <i class="fa-regular fa-star animate__animated animate__jello animate__infinite	infinite"></i></p>
-            <%}%>
-        <%}else{%>
-            <p class="premium-username"><%= postsArr[0].userId.username %></p>
-        <%}%>
-      </p>
+<% if(postsArr.length > 0) {%>
+  <section class="header">
+    <div class="own-user">
+      <div class="ic-email">
+        <% if(postsArr[0].userId.profile_imgUrl && postsArr[0].userId.isPremium ){ %>
+          <img src="<%= '/' + postsArr[0].userId.profile_imgUrl %>" alt="<%= postsArr[0].userId.usernam %>" class="profile-photo" />
+          <% }else{ %>
+            <i class="fa-solid fa-circle-user"></i>
+            <% } %>
+        <p class=""><%= currentUserEmail%></p>
+        <p class="">
+          <% if(postsArr[0].userId.username) {%>
+            <p class="premium-username"><%= postsArr[0].userId.username %>
+              <% if(postsArr[0].userId.isPremium){ %>
+              <i class="fa-regular fa-star animate__animated animate__jello animate__infinite	infinite"></i></p>
+              <%}%>
+          <%}else{%>
+              <p class="premium-username"><%= postsArr[0].userId.username %></p>
+          <%}%>
+        </p>
+      </div>
+      <div class="own-user-right">
+        <a href="/admin/username">Set username</a>
+        <% if(postsArr[0].userId.isPremium){ %>
+          <a href="/admin/profile-image">Upload profile</a>
+          <a href="/admin/premium-details">IO premium status</a>
+          <% }else{ %>
+            <a href="/admin/premium">Buy IO premium</a>
+        <% } %>
+      </div>
     </div>
-    <div class="own-user-right">
-      <a href="/admin/username">Set username</a>
-      <% if(postsArr[0].userId.isPremium){ %>
-        <a href="/admin/premium-details">IO premium status</a>
-        <% }else{ %>
-          <a href="/admin/premium">Buy IO premium</a>
+    <div class="post-container">
+      <% for(let post of postsArr) { %>
+      <div class="post-box">
+        <img
+          src="<%= '/' + post.imgUrl %>"
+          alt="<%= post.title %>"
+          class="post-box-img"
+        />
+        <a class="post-title" href="/post/<%= post._id %>"
+          ><%= post.title.substr(0,40) %></a
+        >
+        <p class="post-des"><%= post.description.substr(0,100) %></p>
+        <hr />
+      </div>
       <% } %>
     </div>
-  </div>
-  <div class="post-container">
-    <% for(let post of postsArr) { %>
-    <div class="post-box">
-      <img
-        src="<%= '/' + post.imgUrl %>"
-        alt="<%= post.title %>"
-        class="post-box-img"
-      />
-      <a class="post-title" href="/post/<%= post._id %>"
-        ><%= post.title.substr(0,40) %></a
+    <div class="paginate">
+      <% if(hasNextPage) {%>
+      <a href="/admin/profile?page=<%= nextPage%>">Next Page <%= nextPage%></a>
+      <% } %> <% if(hasPreviousPage) {%>
+      <a href="/admin/profile?page=<%= previousPage%>"
+        >Previous Page <%= previousPage%></a
       >
-      <p class="post-des"><%= post.description.substr(0,100) %></p>
-      <hr />
+      <% } %>
     </div>
-    <% } %>
-  </div>
-  <div class="paginate">
-    <% if(hasNextPage) {%>
-    <a href="/admin/profile?page=<%= nextPage%>">Next Page <%= nextPage%></a>
-    <% } %> <% if(hasPreviousPage) {%>
-    <a href="/admin/profile?page=<%= previousPage%>"
-      >Previous Page <%= previousPage%></a
-    >
-    <% } %>
-  </div>
-</section>
+  </section>
+  <%}else{%>
+    <section class="header">
+      <h1 style="font-size: 3rem;">Create a new post first.</h1>
+      <a href="/admin/create-post">Create Post</a>
+    </section>
+  <%}%>
 <%- include("../includes/foot") %>

@@ -23,13 +23,20 @@
       <hr />
       <div class="user-index">
         <% if(post.userId._id.toString() == currentUserID.toString() ){%>
-        <a href="/admin/profile" class="index-user-ic"
-          ><i class="fa-solid fa-circle-user index-user-ic"></i
-        ></a>
+        <a href="/admin/profile" class=""
+          >
+          <% if(post.userId.profile_imgUrl && post.userId.isPremium ){ %>
+            <img src="<%= '/' + post.userId.profile_imgUrl %>" alt="<%= post.userId.username %>" class="profile-photo-home" />
+            <% }else{ %>
+              <i class="fa-solid fa-circle-user index-user-ic"></i>
+              <% } %></a>
         <%}else{%>
-        <a href="/profile/<%= post.userId._id %>" class="index-user-ic"
-          ><i class="fa-solid fa-circle-user"></i
-        ></a>
+        <a href="/profile/<%= post.userId._id %>" class=""
+          ><% if(post.userId.profile_imgUrl && post.userId.isPremium ){ %>
+            <img src="<%= '/' + post.userId.profile_imgUrl %>" alt="<%= post.userId.username %>" class="profile-photo-home" />
+            <% }else{ %>
+              <i class="fa-solid fa-circle-user index-user-ic"></i>
+              <% } %></a></a>
         <%}%>
         <div>
           <p class="post-email"><%= post.userId.email %></p>
