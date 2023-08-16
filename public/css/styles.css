@@ -179,6 +179,16 @@ nav .right-side {
   align-items: center;
   justify-content: center;
 }
+/* hompage start */
+.user-index {
+  display: flex;
+  align-items: center;
+}
+.index-user-ic {
+  font-size: 60px;
+  margin-right: 4px;
+}
+/* hompage end */
 
 /* premium start */
 .premium {
@@ -216,6 +226,33 @@ nav .right-side {
   font-size: 18px;
 }
 /* premium end */
+
+/* payment details start */
+.p-details {
+  width: 60%;
+  margin: 0 auto;
+}
+.p-details h1 {
+  font-size: 3rem;
+}
+.p-details span {
+  font-weight: bold;
+}
+.p-details .status {
+  background-color: green;
+  color: #fff;
+  padding: 1px 3px 1px 3px;
+}
+/* payment details end */
+
+/* subscription success start */
+.s-success {
+  text-align: center;
+}
+.s-success h1 {
+  font-size: 3rem;
+}
+/* subscription success end */
 
 /* global styles */
 label {
