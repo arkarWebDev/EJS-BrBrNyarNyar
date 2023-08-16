@@ -92,6 +92,7 @@ exports.renderHomePage = (req, res, next) => {
 
 exports.getPost = (req, res, next) => {
   const postId = req.params.postId;
+  console.log(req.user);
   Post.findById(postId)
     .populate("userId", "email isPremium")
     .then((post) => {
@@ -104,9 +105,7 @@ exports.getPost = (req, res, next) => {
         currentLoginUserId: req.session.userInfo
           ? req.session.userInfo._id
           : "",
-        currentLoginUserStatus: req.session.userInfo
-          ? req.session.userInfo.isPremium
-          : "",
+        currentLoginUserStatus: req.user ? req.user.isPremium : "",
       });
     })
     .catch((err) => {

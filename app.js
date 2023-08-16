@@ -79,7 +79,7 @@ app.use((req, res, next) => {
     return next();
   }
   User.findById(req.session.userInfo._id)
-    .select("_id email")
+    .select("_id email isPremium")
     .then((user) => {
       req.user = user;
       next();
