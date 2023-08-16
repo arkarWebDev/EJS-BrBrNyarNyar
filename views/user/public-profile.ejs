@@ -3,6 +3,16 @@
   <div class="public-user">
     <i class="fa-solid fa-circle-user"></i>
     <p class=""><%= currentUserEmail%></p>
+    <p class="">
+      <% if(postsArr[0].userId.username) {%>
+        <p class="premium-username"><%= postsArr[0].userId.username %>
+          <% if(postsArr[0].userId.isPremium){ %>
+          <i class="fa-regular fa-star animate__animated animate__jello animate__infinite	infinite"></i></p>
+          <%}%>
+      <%}else{%>
+          <p class="premium-username"><%= postsArr[0].userId.username %></p>
+      <%}%>
+    </p>
   </div>
   <div class="post-container">
     <% for(let post of postsArr) { %>

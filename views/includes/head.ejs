@@ -4,25 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
-  <nav>
-    <h1><a href="/">BLOG.IO</a></h1>
-    <div class="right-side">
-      <% if(isLogin) { %>
-          <a href="/admin/create-post">Create post</a>
-          <a href="/admin/profile">
-            Profile
-          </a>
-          <form action="/logout" method="post">
-            <input hidden value="<%= csrfToken %>" name="_csrf" />
-            <button>Logout</button>
-          </form>
+    <nav>
+      <h1><a href="/">BLOG.IO</a></h1>
+      <div class="right-side">
+        <% if(isLogin) { %>
+        <a href="/admin/create-post">Create post</a>
+        <a href="/admin/profile"> Profile </a>
+        <form action="/logout" method="post">
+          <input hidden value="<%= csrfToken %>" name="_csrf" />
+          <button>Logout</button>
+        </form>
         <% } else { %>
-          <a href="/login">Login to existing account</a>
-          <a href="/register">Create a new account</a>
+        <a href="/login">Login to existing account</a>
+        <a href="/register">Create a new account</a>
         <% } %>
-    </div>
-  </nav>
+      </div>
+    </nav>
+  </body>
+</html>
