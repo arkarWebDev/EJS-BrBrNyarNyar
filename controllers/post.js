@@ -8,7 +8,7 @@ const expath = require("path");
 
 const fileDelete = require("../utils/fileDelete");
 
-const POST_PAR_PAGE = 6;
+const POST_PAR_PAGE = 4;
 
 exports.createPost = (req, res, next) => {
   const { title, description } = req.body;

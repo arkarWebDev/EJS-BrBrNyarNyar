@@ -1,6 +1,10 @@
 <%- include("../includes/head") %>
     <section class="p-details">
-     <h1>Premium details</h1>
+     <div class="p-details-p">
+     <div class="p-header">
+      <h1>Premium details</h1>
+      <a href="/admin/profile"><i class="fa-solid fa-backward-step"></i></a>
+     </div>
      <p>Customer_id - <span><%= customer_id %></span></p>
      <p>Country - <span><%= country %></span></p>
      <p>Postal code - <span><%= postal_code %></span></p>
@@ -8,6 +12,7 @@
      <p>Name - <span><%= name %></span></p>
      <p>Nnvoice_id - <span><%= invoice_id %></span></p>
      <p>Status - <span class="status"><%= status %></span></p>
+     </div>
     </section>
   </body>
   <%- include("../includes/foot") %>

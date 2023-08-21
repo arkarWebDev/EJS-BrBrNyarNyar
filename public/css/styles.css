@@ -34,12 +34,11 @@ a {
 }
 nav {
   width: 60%;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #000;
-  padding: 0 10px;
 }
 nav .right-side {
   display: flex;
@@ -61,7 +60,7 @@ nav .right-side {
 }
 .post-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 .post-box {
@@ -99,7 +98,6 @@ nav .right-side {
   text-align: center;
   margin: 40px 0 20px 0;
 }
-
 .profile-photo {
   width: 100px;
   height: 100px;
@@ -119,13 +117,20 @@ nav .right-side {
 }
 .own-user {
   margin: 40px 0 20px 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
 }
+.own-user-left {
+  text-align: center;
+}
+
 .own-user-right a {
   text-align: center;
-  width: 100%;
+}
+.own-user-right-premium,
+.own-user-right-notpremium {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .details img {
@@ -243,16 +248,32 @@ nav .right-side {
 .p-details {
   width: 60%;
   margin: 0 auto;
+  background-color: #000;
+  color: #fff;
+  border-radius: 12px;
+}
+.p-details-p {
+  padding: 40px 40px;
+}
+.p-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.p-header i {
+  font-size: 40px;
 }
 .p-details h1 {
   font-size: 3rem;
+}
+.p-details p {
+  margin-bottom: 4px;
 }
 .p-details span {
   font-weight: bold;
 }
 .p-details .status {
   background-color: green;
-  color: #fff;
   padding: 1px 3px 1px 3px;
 }
 /* payment details end */
